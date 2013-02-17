@@ -5,15 +5,16 @@ using System.Text;
 
 namespace Limelight.Core
 {
+    [Serializable]
     public class CueStack
     {
         public string Label { get; set; }
         public List<Cue> Cues { get; set; }
         public List<Fixture> Fixtures { get; set; } // Each running cue's fixtures are normalized into this list
         public int LastRunCue { get; set; }
-        public CueStackTiming Timing { get; set; }
         public double FaderValue { get; set; }
         public CueStackStatus Status { get; set; }
+        public int? LastCueExecuted { get; set; }
 
         /// <summary>
         /// Constructor
@@ -22,6 +23,18 @@ namespace Limelight.Core
         {
             Cues = new List<Cue>();
             Fixtures = new List<Fixture>();
+            LastCueExecuted = null;
+        }
+
+        /// <summary>
+        /// Adds a cue to this stack's list of cues. Also assigns the cuestack reference
+        /// </summary>
+        /// <param name="cue">Cue to add</param>
+        public void AddCue(Cue cue)
+        {
+            cue.cueStack = this;
+            cue.CueNumber = Cues.Count;
+            this.Cues.Add(cue);
         }
 
         /// <summary>
@@ -31,12 +44,19 @@ namespace Limelight.Core
         {
             foreach (Cue cue in Cues)
             {
+                // Update the cue
+                cue.Update();
+
+                if (cue.Status == CueStatus.NotRunning)
+                    continue;
+
                 foreach (Fixture fixture in cue.Fixtures)
                 {
                     Fixture normalizedFixture = ExistsInFixtures(fixture);
-                    if (normalizedFixture != null)
+                    if (normalizedFixture != null && normalizedFixture.cue != fixture.cue)
                     {
-                        normalizedFixture.Combine(fixture);
+                        bool add = (cue.Status == CueStatus.FadingOut || cue.Status == CueStatus.FadingIn ? true : false);
+                        normalizedFixture.Combine(fixture, add);
                     }
                     else
                     {
@@ -46,6 +66,28 @@ namespace Limelight.Core
                         normalizedFixture = fixture.Clone();
                         normalizedFixture.Master = master;
                         Fixtures.Add(normalizedFixture);
+                    }
+                }
+            }
+
+            // Apply the cue stack's fader value to each fixture's intensity attribute (if applicable)
+            ApplyFader();
+        }
+
+        /// <summary>
+        /// Applies the cuestack's fader value to each normalized fixture's
+        /// intensity attributes
+        /// </summary>
+        public void ApplyFader()
+        {
+            foreach (Fixture fixture in Fixtures)
+            {
+                foreach(FixtureAttribute attribute in fixture.Attributes)
+                {
+                    foreach (FixtureAttributeChannel channel in attribute.Channels)
+                    {
+                        if (channel.AffectedByFader || attribute.Type == FixtureAttributeType.Intensity)
+                            channel.RenderedValue = channel.RenderedValue * FaderValue;
                     }
                 }
             }
@@ -62,6 +104,36 @@ namespace Limelight.Core
                 if (normalizedFixture.Master.Equals(fixture.Master))
                     return fixture;
             return null;
+        }
+
+        /// <summary>
+        /// Executes the next cue
+        /// </summary>
+        public void ExecuteNextCue()
+        {
+            Console.WriteLine("executeNextCue");
+
+            if (Cues.Count == 0)
+                return;
+
+            if (LastCueExecuted == null)
+            {
+                Console.WriteLine("Executing cue 0");
+                Cues[0].Go();
+                return;
+            }
+
+            Cue lastCue = Cues[(int)LastCueExecuted];
+            int cueNumberToExecute = 0;
+
+            if (lastCue.CueNumber + 1 == Cues.Count)
+                cueNumberToExecute = 0;
+            else
+                cueNumberToExecute = lastCue.CueNumber + 1;
+
+            Console.WriteLine("Executing cue " + cueNumberToExecute);
+
+            Cues[cueNumberToExecute].Go();
         }
     }
 }

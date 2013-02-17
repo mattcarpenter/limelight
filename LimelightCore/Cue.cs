@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Limelight.Core
 {
+    [Serializable]
     public class Cue
     {
         public string Label { get; set; }
@@ -19,6 +20,9 @@ namespace Limelight.Core
         public long Ticks { get; set; }
         public bool RenderedDwell { get; set; }
         public bool RenderedNotRunning { get; set; }
+        public CueStack cueStack { get; set; }
+        public int? NextCue { get; set; }
+        public int CueNumber { get; set; }
 
         /// <summary>
         /// Constructor
@@ -27,7 +31,7 @@ namespace Limelight.Core
         {
             Status = CueStatus.NotRunning;
             StatusPct = 0;
-
+            DwellTime = null;
             Fixtures = new List<Fixture>();
         }
 
@@ -39,6 +43,7 @@ namespace Limelight.Core
         public bool AddFixture(Fixture fixture)
         {
             Fixtures.Add(fixture);
+            fixture.cue = this;
             return true;
         }
 
@@ -47,6 +52,10 @@ namespace Limelight.Core
         /// </summary>
         public void Go()
         {
+            // Update the cue stack's last cue executed
+            if(cueStack != null)
+                cueStack.LastCueExecuted = CueNumber;
+
             // Set some beginning values
             ResetCue();
 
@@ -120,6 +129,8 @@ namespace Limelight.Core
                         {
                             Status = CueStatus.FadingOut;
                             StatusPct = 0;
+                            if (OnFinished == CueFinishOperation.Follow && cueStack != null)
+                                cueStack.ExecuteNextCue();
                         }
                         break;
                     case CueStatus.FadingOut:

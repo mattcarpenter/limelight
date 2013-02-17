@@ -17,6 +17,7 @@ namespace Limelight.Core
         public int PatchAddress { get; set; }
         public int PatchUniverse { get; set; }
         public List<FixtureAttribute> Attributes { get; set; }
+        public Cue cue { get; set; }
 
         /// <summary>
         /// Constructor
@@ -46,7 +47,7 @@ namespace Limelight.Core
         /// Combines current instance with fixture
         /// </summary>
         /// <param name="fixture">Fixture to be combined with current instance</param>
-        public void Combine(Fixture fixture)
+        public void Combine(Fixture fixture, bool add)
         {
             for (int attrCur = 0; attrCur < this.Attributes.Count; attrCur++)
             {
@@ -57,10 +58,21 @@ namespace Limelight.Core
 
                     // While combining, treat everything as HTP and invalidate. If both rendered values are null (e.g. neither fixtures have
                     // this channel written into the cue), we can skip this channel.
-                    if (thisChannel.RenderedValue != null && otherChannel.RenderedValue != null)
+                    if (thisChannel.RenderedValue == null && otherChannel.RenderedValue == null)
+                        continue;
+                    else
                     {
-                        if (thisChannel.RenderedValue < otherChannel.RenderedValue || (thisChannel.RenderedValue == null && otherChannel.RenderedValue != null))
-                            thisChannel.RenderedValue = otherChannel.RenderedValue;
+                        if (add && otherChannel.RenderedValue != null)
+                        {
+                            if (thisChannel.RenderedValue == null)
+                                thisChannel.RenderedValue = 0;
+                            thisChannel.RenderedValue += otherChannel.RenderedValue;
+                        }
+                        else
+                        {
+                            if (thisChannel.RenderedValue < otherChannel.RenderedValue || (thisChannel.RenderedValue == null && otherChannel.RenderedValue != null))
+                                thisChannel.RenderedValue = otherChannel.RenderedValue;
+                        }
                         this.Attributes[attrCur].Channels[attrChanCur].PendingRender = true;
                         this.Attributes[attrCur].Channels[attrChanCur].LastUpdated = DateTime.Now.Ticks;
                     }

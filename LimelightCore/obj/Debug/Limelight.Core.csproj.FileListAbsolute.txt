@@ -1,0 +1,5 @@
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightCore\bin\Debug\Limelight.Core.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightCore\bin\Debug\Limelight.Core.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightCore\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightCore\obj\Debug\Limelight.Core.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightCore\obj\Debug\Limelight.Core.pdb

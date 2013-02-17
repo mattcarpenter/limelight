@@ -19,6 +19,7 @@ namespace Limelight.Core
         public FixtureAttributeChannelType Type { get; set; }
         public long LastUpdated { get; set; }
         public bool PendingRender { get; set; }
+        public bool AffectedByFader { get; set; }
 
         /// <summary>
         /// Constructor

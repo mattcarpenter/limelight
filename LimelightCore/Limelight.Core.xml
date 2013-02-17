@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Limelight.Core</name>
+    </assembly>
+    <members>
+        <member name="M:Limelight.Core.Cue.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.Cue.AddFixture(Limelight.Core.Fixture)">
+            <summary>
+            Adds a new fixture object to the cue
+            </summary>
+            <param name="fixture">Fixture to add</param>
+            <returns>True on success</returns>
+        </member>
+        <member name="M:Limelight.Core.Cue.Go">
+            <summary>
+            Activates the cue from the beginning
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.Cue.ResetCue">
+            <summary>
+            Resets status and runtime values
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.Cue.Update">
+            <summary>
+            Fades channels and updates effects
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.Cue.ComputeFades">
+            <summary>
+            Computes each channel's rendered value based on the status pct
+            </summary>
+        </member>
+        <member name="T:Limelight.Core.Fixture">
+            <summary>
+            Represents a fixture with with all its attributes and channels
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.Fixture.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.Fixture.Clone">
+            <summary>
+            Clones this fixture instance and sets the master fixture reference
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Limelight.Core.Fixture.Combine(Limelight.Core.Fixture)">
+            <summary>
+            Combines current instance with fixture
+            </summary>
+            <param name="fixture">Fixture to be combined with current instance</param>
+        </member>
+        <member name="M:Limelight.Core.FixtureAttributeChannel.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.FixtureAttribute.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.CueStack.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.CueStack.AddCue(Limelight.Core.Cue)">
+            <summary>
+            Adds a cue to this stack's list of cues. Also assigns the cuestack reference
+            </summary>
+            <param name="cue">Cue to add</param>
+        </member>
+        <member name="M:Limelight.Core.CueStack.Update">
+            <summary>
+            Computes the normalized Fixtures list for all running cues in the stack
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.CueStack.ApplyFader">
+            <summary>
+            Applies the cuestack's fader value to each normalized fixture's
+            intensity attributes
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.CueStack.ExistsInFixtures(Limelight.Core.Fixture)">
+            <summary>
+            Determines if the specified fixture exists in the list of normalized fixtures
+            </summary>
+            <param name="fixture">Fixture to search for in Fixtures list</param>
+            <returns>The normalized fixture if exists, null if no match</returns>
+        </member>
+        <member name="T:Limelight.Core.ObjectCopier">
+            <summary>
+            Reference Article http://www.codeproject.com/KB/tips/SerializedObjectCloner.aspx
+            Provides a method for performing a deep copy of an object.
+            Binary Serialization is used to perform the copy.
+            </summary>
+        </member>
+        <member name="M:Limelight.Core.ObjectCopier.Clone``1(``0)">
+            <summary>
+            Perform a deep Copy of the object.
+            </summary>
+            <typeparam name="T">The type of object being copied.</typeparam>
+            <param name="source">The object instance to copy.</param>
+            <returns>The copied object.</returns>
+        </member>
+    </members>
+</doc>
