@@ -71,5 +71,42 @@ namespace Limelight.Tests
                 Thread.Sleep(1000);
             }
         }
+
+        [Test]
+        public void combine_CombinesTwoCues()
+        {
+            // Create two cues with the same fixture. One fixture's 1st chan value is 1,
+            // the other fixture's 1st chan value is 0.5.
+            // Combined value should be 1 (HTP)
+            Cue cue1 = new Cue();
+            Cue cue2 = new Cue();
+
+            cue1.Fixtures.Add(MasterFixture.Clone());
+            cue2.Fixtures.Add(MasterFixture.Clone());
+
+            // Pause after fade in
+            cue1.DwellTime = null;
+            cue2.DwellTime = null;
+
+            cue1.Fixtures[0].Attributes[0].Channels[0].Value = 0.5;
+            cue2.Fixtures[0].Attributes[0].Channels[0].Value = 0.9;
+
+            cue1.Go();
+            cue2.Go();
+
+            for (int i = 0; i < 3; i++)
+            {
+                cue1.Update();
+                cue2.Update();
+                Console.WriteLine("c1f1 Intensity: " + cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+                Console.WriteLine("c2f1 Intensity: " + cue2.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+                Thread.Sleep(1000);
+            }
+
+            // Combine f1 from both cues
+            cue1.Fixtures[0].Combine(cue2.Fixtures[0]);
+            Console.WriteLine("c1f1 Intensity after combining: " + cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+            Assert.AreEqual(0.9, cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+        }
     }
 }

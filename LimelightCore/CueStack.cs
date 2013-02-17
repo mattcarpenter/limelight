@@ -16,6 +16,15 @@ namespace Limelight.Core
         public CueStackStatus Status { get; set; }
 
         /// <summary>
+        /// Constructor
+        /// </summary>
+        public CueStack()
+        {
+            Cues = new List<Cue>();
+            Fixtures = new List<Fixture>();
+        }
+
+        /// <summary>
         /// Computes the normalized Fixtures list for all running cues in the stack
         /// </summary>
         public void Update()
@@ -50,7 +59,7 @@ namespace Limelight.Core
         private Fixture ExistsInFixtures(Fixture fixture)
         {
             foreach (Fixture normalizedFixture in Fixtures)
-                if (normalizedFixture.Master.Equals(fixture))
+                if (normalizedFixture.Master.Equals(fixture.Master))
                     return fixture;
             return null;
         }
