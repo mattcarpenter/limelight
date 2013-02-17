@@ -49,6 +49,7 @@
     <Compile Include="FixtureAttributeChannel.cs" />
     <Compile Include="FixtureGroup.cs" />
     <Compile Include="ICueEffect.cs" />
+    <Compile Include="ObjectCopier.cs" />
     <Compile Include="Playback.cs" />
     <Compile Include="Programmer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

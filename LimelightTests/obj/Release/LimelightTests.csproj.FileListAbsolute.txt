@@ -5,3 +5,5 @@ C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Release\ResolveAssemblyReference.cache
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Release\LimelightTests.dll
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Release\LimelightTests.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\nunit.framework.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\nunit.framework.xml
