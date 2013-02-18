@@ -42,6 +42,8 @@ namespace Limelight.Core
         /// </summary>
         public void Update()
         {
+            Fixtures.Clear();
+
             foreach (Cue cue in Cues)
             {
                 // Update the cue
@@ -53,7 +55,7 @@ namespace Limelight.Core
                 foreach (Fixture fixture in cue.Fixtures)
                 {
                     Fixture normalizedFixture = ExistsInFixtures(fixture);
-                    if (normalizedFixture != null && normalizedFixture.cue != fixture.cue)
+                    if (normalizedFixture != null)
                     {
                         bool add = (cue.Status == CueStatus.FadingOut || cue.Status == CueStatus.FadingIn ? true : false);
                         normalizedFixture.Combine(fixture, add);
@@ -102,7 +104,7 @@ namespace Limelight.Core
         {
             foreach (Fixture normalizedFixture in Fixtures)
                 if (normalizedFixture.Master.Equals(fixture.Master))
-                    return fixture;
+                    return normalizedFixture;
             return null;
         }
 

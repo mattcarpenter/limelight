@@ -50,6 +50,7 @@
     <Compile Include="CueStackTests.cs" />
     <Compile Include="CueTests.cs" />
     <Compile Include="FixtureTests.cs" />
+    <Compile Include="OpenDMX.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

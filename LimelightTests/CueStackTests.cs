@@ -91,35 +91,43 @@ namespace Limelight.Tests
         [Test]
         public void update_cuesWithSameFixtureSameIntensity_channelValue_isConstant()
         {
+            OpenDMX.start();
+                        
             Cue cue1 = new Cue();
             Cue cue2 = new Cue();
 
             // Set up fixtures
             cue1.AddFixture(MasterFixture.Clone());
-            cue1.FadeInTime = 5;
-            cue1.DwellTime = 5;
-            cue1.FadeOutTime = 5;
+            cue1.FadeInTime = 1;
+            cue1.DwellTime = 1;
+            cue1.FadeOutTime = 1;
             cue1.OnFinished = CueFinishOperation.Follow;
 
             cue2.AddFixture(MasterFixture.Clone());
-            cue2.DwellTime = 5;
-            cue2.FadeInTime = 5;
+            cue2.DwellTime = 1;
+            cue2.FadeInTime = 1;
+            cue2.FadeOutTime = 1;
+            cue2.OnFinished = CueFinishOperation.Follow;
+            cue2.Fixtures[0].Attributes[0].Channels[0].Value = 0;
 
             // Create the cue stack
             CueStack cs = new CueStack();
-            cs.Cues.Add(cue1);
-            cs.Cues.Add(cue2);
+            cs.AddCue(cue1);
+            cs.AddCue(cue2);
             cs.FaderValue = 1;
 
             cs.ExecuteNextCue();
 
-            for (int i = 0; i < 15; i++)
+            while(1==1)
             {
                 cs.Update();
-                Console.WriteLine("c1f1: " + cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
-                Console.WriteLine("c2f1: " + cue2.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
-                Console.WriteLine("---");
-                Thread.Sleep(1000);
+                //Console.WriteLine("c1f1: " + cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+                //Console.WriteLine("c2f1: " + cue2.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+               
+                Byte DMXValue = Convert.ToByte(cs.Fixtures[0].Attributes[0].Channels[0].RenderedValue * 255.0f);
+                Console.WriteLine("DMX Value: " + DMXValue);
+                OpenDMX.setDmxValue(0, DMXValue);
+                Thread.Sleep(20);
             }
         }
     }

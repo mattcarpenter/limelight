@@ -77,6 +77,7 @@ namespace Limelight.Core
             RenderedDwell = false;
             RenderedNotRunning = false;
             StatusPct = 0.0f;
+            Ticks = 0;
             Status = CueStatus.FadingIn;
         }
 

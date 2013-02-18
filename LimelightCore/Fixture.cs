@@ -67,6 +67,8 @@ namespace Limelight.Core
                             if (thisChannel.RenderedValue == null)
                                 thisChannel.RenderedValue = 0;
                             thisChannel.RenderedValue += otherChannel.RenderedValue;
+                            if (thisChannel.RenderedValue > 1)
+                                thisChannel.RenderedValue = 1;
                         }
                         else
                         {
