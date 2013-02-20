@@ -75,7 +75,6 @@ namespace Limelight.Core
                 // normalized fixtures, unless another running cue is using that fixture.
                 if (cue.Status == CueStatus.Releasing)
                     cue.Status = CueStatus.NotRunning;
-            
             }
 
             // Apply the cue stack's fader value to each fixture's intensity attribute (if applicable)
@@ -119,44 +118,59 @@ namespace Limelight.Core
         /// </summary>
         public void ExecuteNextCue()
         {
-            ReleaseIndefiniteCues();
-
-            Console.WriteLine("executeNextCue");
-
+            // Nothing to execute? Execute nothing!
             if (Cues.Count == 0)
                 return;
 
+            // First time executing a cue on this playback? Go to cue 0.
             if (LastCueExecuted == null)
             {
-                Console.WriteLine("Executing cue 0");
-                Cues[0].Go();
+                GoToCue(0);
                 return;
             }
 
+            // What's the last cue that we executed?
             Cue lastCue = Cues[(int)LastCueExecuted];
-            int cueNumberToExecute = 0;
 
+            // If it was the last cue, go back to the first one.
+            // Else, execute the last cue 
             if (lastCue.CueNumber + 1 == Cues.Count)
-                cueNumberToExecute = 0;
+                GoToCue(0);
             else
-                cueNumberToExecute = lastCue.CueNumber + 1;
-
-            Console.WriteLine("Executing cue " + cueNumberToExecute);
-
-            Cues[cueNumberToExecute].Go();
+                GoToCue(lastCue.CueNumber + 1);
         }
 
+        /// <summary>
+        /// Go to the specified cue. Indefinite cues currently running will be released
+        /// </summary>
+        /// <param name="cueNumber">Cue number to go to</param>
+        public void GoToCue(int cueNumber)
+        {
+            // Release anything that doesn't fade out automagically
+            ReleaseIndefiniteCues();
+            LastCueExecuted = cueNumber;
+
+            // Execute the specified cue
+            Cues[cueNumber].Go();
+        }
+
+        /// <summary>
+        /// Any cue that is dwelling indefinitely needs to be
+        /// marked as releasing so that the rendered values can be set to 0
+        /// and added to the normalized fixtures for this playback. Once all
+        /// normalized fixtures have been generated, any cue with a status of
+        /// releasing will be set to NotRunning.
+        /// </summary>
         public void ReleaseIndefiniteCues()
         {
             foreach (Cue c in Cues)
                 if (c.Status == CueStatus.Dwelling && c.DwellTime == null)
                 {
-                    Console.WriteLine("Releasing cue " + c.CueNumber);
                     c.Status = CueStatus.Releasing;
                     
-                    // Zero all fixtures in cue
-                    foreach (Fixture f in c.Fixtures)
-                        f.Zero();
+                    // Zero all fixtures in cue - !!! Don't think this is needed anymore !!!
+                    //foreach (Fixture f in c.Fixtures)
+                    //    f.Zero();
                 }
         }
     }

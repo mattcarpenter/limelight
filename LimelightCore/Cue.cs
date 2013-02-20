@@ -114,7 +114,7 @@ namespace Limelight.Core
                     break;
             }
             StatusPct += fadeIncrement;
-            Console.WriteLine("Status: " + Status.ToString() + " Pct: " + StatusPct);
+
             // Check if the status needs updating
             if (StatusPct >= 1)
             {
@@ -142,13 +142,13 @@ namespace Limelight.Core
             }
 
             // Compute the RenderedValue based on the status pct
-            ComputeFades();
+            RenderChannels();
         }
 
         /// <summary>
         /// Computes each channel's rendered value based on the status pct
         /// </summary>
-        private void ComputeFades()
+        private void RenderChannels()
         {
             foreach(Fixture f in Fixtures)
             {
