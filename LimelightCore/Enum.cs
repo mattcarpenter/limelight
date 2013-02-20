@@ -11,5 +11,5 @@ namespace Limelight.Core
     public enum CueFinishOperation { Follow, Pause }
     public enum CueStackTiming { Cue, Chase, TapSync }
     public enum CueStackStatus { Active, Released }
-    public enum CueStatus { FadingIn, Dwelling, Paused, FadingOut, NotRunning }
+    public enum CueStatus { FadingIn, Dwelling, Paused, FadingOut, NotRunning, Releasing }
 }

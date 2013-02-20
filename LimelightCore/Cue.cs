@@ -65,7 +65,7 @@ namespace Limelight.Core
             else
             {
                 Status = CueStatus.Dwelling;
-                StatusPct = 1.0f;
+                StatusPct = 0.0f;
             }
         }
 
@@ -114,7 +114,7 @@ namespace Limelight.Core
                     break;
             }
             StatusPct += fadeIncrement;
-
+            Console.WriteLine("Status: " + Status.ToString() + " Pct: " + StatusPct);
             // Check if the status needs updating
             if (StatusPct >= 1)
             {
@@ -135,7 +135,7 @@ namespace Limelight.Core
                         }
                         break;
                     case CueStatus.FadingOut:
-                        Status = CueStatus.NotRunning;
+                        Status = CueStatus.Releasing;
                         StatusPct = 0;
                         break;
                 }
@@ -188,6 +188,9 @@ namespace Limelight.Core
                                     c.LastUpdated = DateTime.Now.Ticks;
                                     RenderedNotRunning = true;
                                 }
+                                break;
+                            case CueStatus.Releasing:
+                                c.RenderedValue = 0;
                                 break;
                         }
 

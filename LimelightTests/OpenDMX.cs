@@ -67,7 +67,7 @@ namespace Limelight
         {
             if (buffer != null)
             {
-                buffer[channel + 1] = value;
+                buffer[channel] = value;
             }
         }
 

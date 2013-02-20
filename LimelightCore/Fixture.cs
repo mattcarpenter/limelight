@@ -81,5 +81,15 @@ namespace Limelight.Core
                 }
             }
         }
+
+        /// <summary>
+        /// Zeros out all channels
+        /// </summary>
+        public void Zero()
+        {
+            foreach (FixtureAttribute a in Attributes)
+                foreach (FixtureAttributeChannel c in a.Channels)
+                    c.RenderedValue = 0;
+        }
     }
 }

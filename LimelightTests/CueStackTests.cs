@@ -12,13 +12,15 @@ namespace Limelight.Tests
     class CueStackTests
     {
         private Fixture MasterFixture;
-
+        private Fixture MasterFixture2;
+        
         [SetUp]
         public void Init()
         {
             // Mock a fixture with a single intensity channel and set the value to 1
             MasterFixture = new Fixture();
             MasterFixture.Label = "Test";
+            MasterFixture.PatchAddress = 1;
 
             FixtureAttribute fa = new FixtureAttribute();
             fa.Type = FixtureAttributeType.Intensity;
@@ -29,6 +31,19 @@ namespace Limelight.Tests
 
             fa.Channels.Add(c);
             MasterFixture.Attributes.Add(fa);
+
+            MasterFixture2 = new Fixture();
+            MasterFixture2.Label = "Test2";
+            MasterFixture2.PatchAddress = 3;
+            FixtureAttribute fa2 = new FixtureAttribute();
+            fa2.Type = FixtureAttributeType.Intensity;
+
+            FixtureAttributeChannel c2 = new FixtureAttributeChannel();
+            c2.Type = FixtureAttributeChannelType.Default;
+            c2.Value = 1;
+
+            fa2.Channels.Add(c2);
+            MasterFixture2.Attributes.Add(fa2);
         }
 
         [Test]
@@ -98,36 +113,45 @@ namespace Limelight.Tests
 
             // Set up fixtures
             cue1.AddFixture(MasterFixture.Clone());
-            cue1.FadeInTime = 1;
+            cue1.FadeInTime = 0;
             cue1.DwellTime = 1;
-            cue1.FadeOutTime = 1;
+            cue1.FadeOutTime = 0;
             cue1.OnFinished = CueFinishOperation.Follow;
 
             cue2.AddFixture(MasterFixture.Clone());
+            cue2.AddFixture(MasterFixture2.Clone());
             cue2.DwellTime = 1;
-            cue2.FadeInTime = 1;
-            cue2.FadeOutTime = 1;
+            cue2.FadeInTime = 0;
+            cue2.FadeOutTime = 0;
             cue2.OnFinished = CueFinishOperation.Follow;
             cue2.Fixtures[0].Attributes[0].Channels[0].Value = 0;
+            cue2.Fixtures[1].Attributes[0].Channels[0].Value = 1;
 
             // Create the cue stack
             CueStack cs = new CueStack();
             cs.AddCue(cue1);
             cs.AddCue(cue2);
-            cs.FaderValue = 1;
+            cs.FaderValue = 1.0f;
 
             cs.ExecuteNextCue();
 
             while(1==1)
             {
                 cs.Update();
-                //Console.WriteLine("c1f1: " + cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
-                //Console.WriteLine("c2f1: " + cue2.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
-               
-                Byte DMXValue = Convert.ToByte(cs.Fixtures[0].Attributes[0].Channels[0].RenderedValue * 255.0f);
-                Console.WriteLine("DMX Value: " + DMXValue);
-                OpenDMX.setDmxValue(0, DMXValue);
-                Thread.Sleep(20);
+                Console.WriteLine("c1f1: " + cue1.Fixtures[0].Attributes[0].Channels[0].RenderedValue);
+
+                WriteFixturesToDMX(cs.Fixtures);
+                
+                Thread.Sleep(15);
+            }
+        }
+
+        public void WriteFixturesToDMX(List<Fixture> fixtures)
+        {
+            foreach (Fixture fixture in fixtures)
+            {
+                Byte DMXValue = Convert.ToByte(fixture.Attributes[0].Channels[0].RenderedValue * 255.0f);
+                OpenDMX.setDmxValue(fixture.PatchAddress, DMXValue);
             }
         }
     }

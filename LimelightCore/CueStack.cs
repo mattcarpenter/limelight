@@ -70,6 +70,12 @@ namespace Limelight.Core
                         Fixtures.Add(normalizedFixture);
                     }
                 }
+            
+                // If this cue was releasing, mark it as not running. The zeroed fixtures should've been inserted into
+                // normalized fixtures, unless another running cue is using that fixture.
+                if (cue.Status == CueStatus.Releasing)
+                    cue.Status = CueStatus.NotRunning;
+            
             }
 
             // Apply the cue stack's fader value to each fixture's intensity attribute (if applicable)
@@ -113,6 +119,8 @@ namespace Limelight.Core
         /// </summary>
         public void ExecuteNextCue()
         {
+            ReleaseIndefiniteCues();
+
             Console.WriteLine("executeNextCue");
 
             if (Cues.Count == 0)
@@ -136,6 +144,20 @@ namespace Limelight.Core
             Console.WriteLine("Executing cue " + cueNumberToExecute);
 
             Cues[cueNumberToExecute].Go();
+        }
+
+        public void ReleaseIndefiniteCues()
+        {
+            foreach (Cue c in Cues)
+                if (c.Status == CueStatus.Dwelling && c.DwellTime == null)
+                {
+                    Console.WriteLine("Releasing cue " + c.CueNumber);
+                    c.Status = CueStatus.Releasing;
+                    
+                    // Zero all fixtures in cue
+                    foreach (Fixture f in c.Fixtures)
+                        f.Zero();
+                }
         }
     }
 }

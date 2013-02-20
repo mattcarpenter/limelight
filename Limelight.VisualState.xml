@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight.nunit</TopNode>
+  <SelectedNode>[0-1011]Limelight.Tests.CueStackTests.update_cuesWithSameFixtureSameIntensity_channelValue_isConstant</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight.nunit" Expanded="true" />
+    <Node UniqueName="[0-1012]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\LimelightTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1013]Limelight" Expanded="true" />
+    <Node UniqueName="[0-1014]Limelight.Tests" Expanded="true" />
+    <Node UniqueName="[0-1008]Limelight.Tests.CueStackTests" Expanded="true" />
+    <Node UniqueName="[0-1004]Limelight.Tests.CueTests" Expanded="true" />
+    <Node UniqueName="[0-1001]Limelight.Tests.FixtureTests" Expanded="true" />
+  </Nodes>
+</VisualState>
