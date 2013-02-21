@@ -7,11 +7,23 @@ namespace Limelight.Core
 {
     public class Application
     {
-        protected List<Universe> Universes;
-        protected List<CueStack> CueStacks;
-        protected List<Playback> Playbacks;
-        protected double Tempo;
-        protected bool Blackout;
-        protected Programmer CueProgrammer;
+        public List<Universe> Universes;
+        public List<CueStack> CueStacks;
+        public List<Playback> Playbacks;
+        public double Tempo;
+        public bool Blackout;
+        public Programmer CueProgrammer;
+
+        /// <summary>
+        /// Enumerate each running cuestack's normalized fixture list and
+        /// compute the final DMX address values
+        /// </summary>
+        public void Update()
+        {
+            foreach (CueStack stack in CueStacks)
+            {
+
+            }
+        }
     }
 }

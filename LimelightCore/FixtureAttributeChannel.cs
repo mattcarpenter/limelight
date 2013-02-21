@@ -14,13 +14,13 @@ namespace Limelight.Core
         public double? Value { get; set; }
         public double? RenderedValue { get; set; }
         public double? LocateValue { get; set; }
-        public ChannelPresidence Priority { get; set; }
+        public ChannelPresidence Presidence { get; set; }
         public bool Inverted { get; set; }
         public FixtureAttributeChannelType Type { get; set; }
         public long LastUpdated { get; set; }
         public bool PendingRender { get; set; }
         public bool AffectedByFader { get; set; }
-
+    
         /// <summary>
         /// Constructor
         /// </summary>
@@ -33,6 +33,9 @@ namespace Limelight.Core
             // By default, the Value and RenderedValue should be null
             Value = null;
             RenderedValue = null;
+
+            // HTP by default
+            Presidence = ChannelPresidence.HTP;
         }
     }
 }

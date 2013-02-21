@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreTests.cs" />
     <Compile Include="CueStackTests.cs" />
     <Compile Include="CueTests.cs" />
     <Compile Include="FixtureTests.cs" />

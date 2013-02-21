@@ -18,13 +18,15 @@ namespace Limelight.Core
         public int PatchUniverse { get; set; }
         public List<FixtureAttribute> Attributes { get; set; }
         public Cue cue { get; set; }
+        public Universe universe { get; set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Fixture()
+        public Fixture(Universe u = null)
         {
             Attributes = new List<FixtureAttribute>();
+            universe = u;
         }
 
         /// <summary>
@@ -34,7 +36,7 @@ namespace Limelight.Core
         public Fixture Clone()
         {
             // Clone this fixture instance 
-            Fixture newFixture = new Fixture();
+            Fixture newFixture = new Fixture(universe);
             newFixture = ObjectCopier.Clone<Fixture>(this);
             
             // Set the master fixture reference to this instance
