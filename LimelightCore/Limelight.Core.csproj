@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Channel.cs" />
     <Compile Include="Core.cs" />
     <Compile Include="Cue.cs" />
     <Compile Include="CueStack.cs" />

@@ -9,11 +9,16 @@ namespace Limelight.Core
     public class Universe
     {
         public int Id { get; set; }
-        public Double[] Addresses { get; set;}
+        public Channel[] Channels { get; set;}
 
         public Universe()
         {
-            Addresses = new double[512];
+            Channels = new Channel[512];
+
+            for (int i = 0; i < 512; i++)
+            {
+                Channels[i] = new Channel();
+            }
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Limelight.Tests
             app.Universes.Add(u);
 
             // Mock a fixture with a single intensity channel and set the value to 1
-            fixture = new Fixture(u);
+            fixture = new Fixture(0);
             fixture.Label = "Red";
             fixture.PatchAddress = 1;
 
@@ -34,6 +34,7 @@ namespace Limelight.Tests
 
             FixtureAttributeChannel c = new FixtureAttributeChannel();
             c.Type = FixtureAttributeChannelType.Default;
+            c.Presidence = ChannelPresidence.LTP;
             fa.Channels.Add(c);
             fixture.Attributes.Add(fa);
         }
@@ -44,17 +45,24 @@ namespace Limelight.Tests
             // Create cues and cue stacks
             CueStack cs1 = new CueStack();
             Cue c1 = new Cue();
-            c1.AddFixture(fixture.Clone());
-            c1.Fixtures[0].Attributes[0].Channels[0].Value = 1;
+            Fixture f = fixture.Clone();
+
+            c1.AddFixture(f);
+            c1.Fixtures[0].Attributes[0].Channels[0].Value = 0.7;
             c1.DwellTime = null;
             cs1.AddCue(c1);
 
             CueStack cs2 = new CueStack();
             Cue c2 = new Cue();
-            c2.AddFixture(fixture.Clone());
-            c2.Fixtures[0].Attributes[0].Channels[0].Value = 0.3;
+            Fixture f2 = fixture.Clone();
+
+            c2.AddFixture(f2);
+            c2.Fixtures[0].Attributes[0].Channels[0].Value = 0.25;
             c2.DwellTime = null;
             cs2.AddCue(c2);
+
+            cs1.FaderValue = 1;
+            cs2.FaderValue = 1;
 
             // Create playbacks
             Playback pb1 = new Playback();
@@ -63,18 +71,22 @@ namespace Limelight.Tests
             pb1.Stack = cs1;
             pb2.Stack = cs2;
 
-            // Start both cue stacks
+            app.CueStacks.Add(cs1);
+            app.CueStacks.Add(cs2);
+
+            // Start the first cue stack and update everything
             cs1.ExecuteNextCue();
-            cs2.ExecuteNextCue();
-
-            cs1.Update();
-            cs2.Update();
-
-            Console.WriteLine("Before core update:");
-            Console.WriteLine("cs1f1c1: " + cs1.Cues[0].Fixtures[0].Attributes[0].Channels[0].RenderedValue);
-            Console.WriteLine("cs2f1c1: " + cs2.Cues[0].Fixtures[0].Attributes[0].Channels[0].RenderedValue);
-
             app.Update();
+
+            // Sleep a bit
+            Thread.Sleep(1000);
+
+            // Start the next one
+            cs2.ExecuteNextCue();
+            app.Update();
+
+            // What's the value of Universe 0 Channel 0?
+            Console.WriteLine("u0c0: " + app.Universes[0].Channels[0].Value);
         }
     }
 }
