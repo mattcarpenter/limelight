@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
   <TopNode>[0-1000]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight.nunit</TopNode>
-  <SelectedNode>[0-1000]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight.nunit</SelectedNode>
+  <SelectedNode>[0-1013]Limelight.Tests.CoreTests.update_PlaybackCueStacksCombined</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight.nunit" Expanded="true" />
-    <Node UniqueName="[0-1012]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\LimelightTests.dll" Expanded="true" />
-    <Node UniqueName="[0-1013]Limelight" Expanded="true" />
-    <Node UniqueName="[0-1014]Limelight.Tests" Expanded="true" />
+    <Node UniqueName="[0-1014]C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\LimelightTests.dll" Expanded="true" />
+    <Node UniqueName="[0-1015]Limelight" Expanded="true" />
+    <Node UniqueName="[0-1016]Limelight.Tests" Expanded="true" />
+    <Node UniqueName="[0-1012]Limelight.Tests.CoreTests" Expanded="true" />
     <Node UniqueName="[0-1008]Limelight.Tests.CueStackTests" Expanded="true" />
     <Node UniqueName="[0-1004]Limelight.Tests.CueTests" Expanded="true" />
     <Node UniqueName="[0-1001]Limelight.Tests.FixtureTests" Expanded="true" />

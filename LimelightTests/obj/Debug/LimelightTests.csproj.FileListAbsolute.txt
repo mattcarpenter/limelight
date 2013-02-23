@@ -1,0 +1,9 @@
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Debug\LimelightTests.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Debug\LimelightTests.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Debug\Limelight.Core.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Debug\nunit.framework.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Debug\Limelight.Core.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Debug\nunit.framework.xml
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Debug\LimelightTests.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Debug\LimelightTests.pdb

@@ -1,0 +1,13 @@
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.exe
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.ParentForm.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.Properties.Resources.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.exe
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackForm.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\AVFader.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.Resource.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackControl.resources
