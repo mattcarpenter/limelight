@@ -12,7 +12,34 @@ namespace Limelight.Core
         public List<Cue> Cues { get; set; }
         public List<Fixture> Fixtures { get; set; } // Each running cue's fixtures are normalized into this list
         public int LastRunCue { get; set; }
-        public double FaderValue { get; set; }
+        public double _faderValue;
+        public double FaderValue
+        { 
+            get
+            {
+                return _faderValue;   
+            }
+
+            set
+            {
+                _faderValue = value;
+
+                // Invalidate everything
+                foreach (Cue cue in Cues)
+                {
+                    if (cue.Status == CueStatus.NotRunning)
+                        continue;
+
+                    foreach (Fixture f in cue.Fixtures)
+                        foreach (FixtureAttribute fa in f.Attributes)
+                            foreach (FixtureAttributeChannel c in fa.Channels)
+                            {
+                                c.PendingRender = true;
+                                c.LastUpdated++;
+                            }
+                }
+            }
+        }
         public CueStackStatus Status { get; set; }
         public int? LastCueExecuted { get; set; }
 
@@ -94,7 +121,7 @@ namespace Limelight.Core
                     foreach (FixtureAttributeChannel channel in attribute.Channels)
                     {
                         if (channel.AffectedByFader || attribute.Type == FixtureAttributeType.Intensity)
-                            channel.RenderedValue = channel.RenderedValue * FaderValue;
+                            channel.RenderedValue = channel.RenderedValue * _faderValue;
                     }
                 }
             }
