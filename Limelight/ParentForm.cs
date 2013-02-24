@@ -6,13 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Timers;
 
 namespace Limelight
 {
     public partial class ParentForm : Form
     {
         private Core.Application coreApp;
-        private Timer updateTimer;
+        private System.Timers.Timer updateTimer;
         private PlaybackForm playbackForm;
 
         /// <summary>
@@ -55,9 +56,10 @@ namespace Limelight
             playbackForm.Show();
 
             // Start the update timer
-            updateTimer = new Timer();
-            updateTimer.Interval = 5;
-            updateTimer.Tick += Update;
+            updateTimer = new System.Timers.Timer();
+            updateTimer.Interval = 1;
+            updateTimer.Elapsed += Update;
+
             updateTimer.Start();
 
             // Add some shizz for testing
@@ -100,6 +102,8 @@ namespace Limelight
         /// <param name="e"></param>
         private void Update(object sender, EventArgs e)
         {
+            this.Invoke(new MethodInvoker(delegate()
+            {
             // Render channel values
             coreApp.Update();
             
@@ -109,6 +113,7 @@ namespace Limelight
             // Update labels on the playback form
             if (playbackForm != null)
                 playbackForm.UpdateLabels();
+            }));
         }
 
         /// <summary>
