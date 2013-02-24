@@ -11,6 +11,11 @@ namespace Limelight
 {
     public partial class PlaybackControl : UserControl
     {
+        #region Public Events
+        [Category("Action"), Description("Occurs when the slider is moved")]
+        public event EventHandler OnChange;
+        #endregion
+
         public PlaybackControl()
         {
             InitializeComponent();
@@ -23,7 +28,7 @@ namespace Limelight
 
         private void fader_ValueChange(object sender, EventArgs e)
         {
-            labelFaderPct.Text = fader.Value.ToString() + "%";
+            OnChange(this,new EventArgs());
         }
     }
 }

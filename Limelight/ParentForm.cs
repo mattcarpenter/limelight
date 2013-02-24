@@ -55,7 +55,7 @@ namespace Limelight
 
             // Start the update timer
             updateTimer = new Timer();
-            updateTimer.Interval = 15;
+            updateTimer.Interval = 5;
             updateTimer.Tick += Update;
             updateTimer.Start();
         }
@@ -67,6 +67,8 @@ namespace Limelight
         /// <param name="e"></param>
         private void Update(object sender, EventArgs e)
         {
+            coreApp.Update();
+
             // Update labels on the playback form
             if (playbackForm != null)
                 playbackForm.UpdateLabels();

@@ -44,6 +44,7 @@ namespace Limelight
                 pbc.Height = playbackPanel.Height;
                 pbc.Anchor = (AnchorStyles.Bottom | AnchorStyles.Top);
                 pbc.Left = i * (pbc.Width+5);
+                pbc.OnChange += FaderChange;
                 playbackControls.Add(pbc);
 
                 // Tag will be the offset used for calcuating the actual playback
@@ -87,6 +88,8 @@ namespace Limelight
                 Core.Playback corePlayback = coreApp.Playbacks[(currentPage*8) - 8 + (int)playbackControl.Tag];
 
                 playbackControl.labelTitle.Text = corePlayback.Label;
+                playbackControl.labelFaderPct.Text = playbackControl.fader.Value.ToString() + "%";
+                
             }
         }
 
@@ -112,14 +115,37 @@ namespace Limelight
             UpdateFaderPositions();
         }
 
+        /// <summary>
+        /// Event handler for next page button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNextPage_Click(object sender, EventArgs e)
         {
             NextPage();
         }
 
+        /// <summary>
+        /// Event handler for previous page button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPrevPage_Click(object sender, EventArgs e)
         {
             PrevPage();
+        }
+
+        /// <summary>
+        /// Event handler for a fader change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FaderChange(object sender, EventArgs e)
+        {
+            Core.Playback corePlayback = coreApp.Playbacks[(currentPage * 8) - 8 + (int)((PlaybackControl)sender).Tag];
+
+            if (corePlayback.Stack != null)
+                corePlayback.Stack.FaderValue = (double)((PlaybackControl)sender).fader.Value / 100;
         }
     }
 }
