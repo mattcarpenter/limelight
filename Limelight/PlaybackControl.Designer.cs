@@ -188,13 +188,13 @@
 
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelStatus;
-        private System.Windows.Forms.Label labelTitle;
+        public System.Windows.Forms.Label labelTitle;
         private System.Windows.Forms.Panel controlPanel;
-        private AVFader.AVFader fader;
+        public AVFader.AVFader fader;
         private System.Windows.Forms.Button buttonBump;
         private System.Windows.Forms.Button buttonRelease;
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Button buttonSelect;
-        private System.Windows.Forms.Label labelFaderPct;
+        public System.Windows.Forms.Label labelFaderPct;
     }
 }

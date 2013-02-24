@@ -9,5 +9,11 @@ namespace Limelight.Core
     {
         public string Label { get; set; }
         public CueStack Stack { get; set; }
+
+        public Playback(String l = "")
+        {
+            Label = l;
+        }
+    
     }
 }

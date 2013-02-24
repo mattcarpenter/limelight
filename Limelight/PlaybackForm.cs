@@ -45,10 +45,16 @@ namespace Limelight
                 pbc.Anchor = (AnchorStyles.Bottom | AnchorStyles.Top);
                 pbc.Left = i * (pbc.Width+5);
                 playbackControls.Add(pbc);
+
+                // Tag will be the offset used for calcuating the actual playback
+                // not relative to the current page.
+                pbc.Tag = i;
             }
             
             // Add to the form
             playbackPanel.Controls.AddRange(playbackControls.ToArray());
+
+            UpdateFaderPositions();
         }
 
         /// <summary>
@@ -57,7 +63,15 @@ namespace Limelight
         /// </summary>
         public void UpdateFaderPositions()
         {
+            foreach (PlaybackControl playbackControl in playbackControls)
+            {
+                Core.Playback corePlayback = coreApp.Playbacks[(currentPage * 8) - 8 + (int)playbackControl.Tag];
+                if (corePlayback.Stack != null)
+                    playbackControl.fader.Value = Convert.ToInt32(corePlayback.Stack.FaderValue * 100);
+                else
+                    playbackControl.fader.Value = 0 ;
 
+            }
         }
 
         /// <summary>
@@ -66,6 +80,14 @@ namespace Limelight
         public void UpdateLabels()
         {
             lblPage.Text = "Page: " + currentPage.ToString();
+
+            // Update the playbacks
+            foreach (PlaybackControl playbackControl in playbackControls)
+            {
+                Core.Playback corePlayback = coreApp.Playbacks[(currentPage*8) - 8 + (int)playbackControl.Tag];
+
+                playbackControl.labelTitle.Text = corePlayback.Label;
+            }
         }
 
         /// <summary>

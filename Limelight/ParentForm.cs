@@ -44,6 +44,10 @@ namespace Limelight
                 }
             }
             
+            // Create some playbacks
+            for (int i = 0; i < 80; i++)
+                coreApp.Playbacks.Add(new Core.Playback("PB" + (i+1).ToString()));
+
             // Add playback window
             playbackForm = new PlaybackForm(coreApp);
             playbackForm.MdiParent = this;
