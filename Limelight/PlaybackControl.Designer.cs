@@ -31,20 +31,22 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.labelStatus = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.controlPanel = new System.Windows.Forms.Panel();
             this.fader = new AVFader.AVFader();
             this.buttonBump = new System.Windows.Forms.Button();
             this.buttonRelease = new System.Windows.Forms.Button();
             this.buttonPlay = new System.Windows.Forms.Button();
             this.buttonSelect = new System.Windows.Forms.Button();
+            this.labelFaderPct = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.controlPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.labelFaderPct);
             this.panel4.Controls.Add(this.labelStatus);
             this.panel4.Controls.Add(this.labelTitle);
             this.panel4.Location = new System.Drawing.Point(0, 0);
@@ -75,19 +77,19 @@
             this.labelTitle.Text = "PB1";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel3
+            // controlPanel
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.controlPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel3.Controls.Add(this.fader);
-            this.panel3.Controls.Add(this.buttonBump);
-            this.panel3.Controls.Add(this.buttonRelease);
-            this.panel3.Controls.Add(this.buttonPlay);
-            this.panel3.Controls.Add(this.buttonSelect);
-            this.panel3.Location = new System.Drawing.Point(18, 70);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(50, 258);
-            this.panel3.TabIndex = 5;
+            this.controlPanel.Controls.Add(this.fader);
+            this.controlPanel.Controls.Add(this.buttonBump);
+            this.controlPanel.Controls.Add(this.buttonRelease);
+            this.controlPanel.Controls.Add(this.buttonPlay);
+            this.controlPanel.Controls.Add(this.buttonSelect);
+            this.controlPanel.Location = new System.Drawing.Point(18, 70);
+            this.controlPanel.Name = "controlPanel";
+            this.controlPanel.Size = new System.Drawing.Size(50, 258);
+            this.controlPanel.TabIndex = 5;
             // 
             // fader
             // 
@@ -156,17 +158,28 @@
             this.buttonSelect.Text = "Sel";
             this.buttonSelect.UseVisualStyleBackColor = true;
             // 
+            // labelFaderPct
+            // 
+            this.labelFaderPct.AutoSize = true;
+            this.labelFaderPct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.labelFaderPct.Location = new System.Drawing.Point(-2, 54);
+            this.labelFaderPct.Name = "labelFaderPct";
+            this.labelFaderPct.Size = new System.Drawing.Size(21, 13);
+            this.labelFaderPct.TabIndex = 2;
+            this.labelFaderPct.Text = "0%";
+            // 
             // PlaybackControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.controlPanel);
             this.Name = "PlaybackControl";
             this.Size = new System.Drawing.Size(85, 330);
+            this.Load += new System.EventHandler(this.PlaybackControl_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
+            this.controlPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -176,11 +189,12 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label labelStatus;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel controlPanel;
         private AVFader.AVFader fader;
         private System.Windows.Forms.Button buttonBump;
         private System.Windows.Forms.Button buttonRelease;
         private System.Windows.Forms.Button buttonPlay;
         private System.Windows.Forms.Button buttonSelect;
+        private System.Windows.Forms.Label labelFaderPct;
     }
 }

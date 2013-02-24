@@ -13,6 +13,7 @@ namespace Limelight
         [STAThread]
         static void Main()
         {
+            // Initialize the core application
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ParentForm());

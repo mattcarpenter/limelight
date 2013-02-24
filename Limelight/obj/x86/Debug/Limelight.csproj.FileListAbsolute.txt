@@ -11,3 +11,5 @@ C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\AVFader.dll
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.Resource.resources
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackControl.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.pdb
