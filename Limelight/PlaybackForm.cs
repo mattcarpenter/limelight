@@ -159,7 +159,7 @@ namespace Limelight
 
         private void InvokeOnFaderChangeForAll()
         {
-            foreach (PlaybackControl plc in this.Controls.OfType<PlaybackControl>())
+            foreach (PlaybackControl plc in this.playbackPanel.Controls.OfType<PlaybackControl>())
             {
                 OnFaderChange.Invoke(plc, new EventArgs());
             }

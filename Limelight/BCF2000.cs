@@ -48,6 +48,14 @@ namespace Limelight
             outChannels[5] = Channel.Channel6;
             outChannels[6] = Channel.Channel7;
             outChannels[7] = Channel.Channel8;
+            outChannels[8] = Channel.Channel9;
+            outChannels[9] = Channel.Channel10;
+            outChannels[10] = Channel.Channel1;
+            outChannels[11] = Channel.Channel2;
+            outChannels[12] = Channel.Channel3;
+            outChannels[13] = Channel.Channel4;
+            outChannels[14] = Channel.Channel5;
+            outChannels[15] = Channel.Channel6;
 
             inputDevice.Open();
             outputDevice.Open();
@@ -67,12 +75,14 @@ namespace Limelight
         {
             playbackForm.Invoke(new MethodInvoker(delegate()
             {
-                int channel = (playbackForm.currentPage * 8) - 8 + (int)((PlaybackControl)sender).Tag + 1;
+                int channel = (int)((PlaybackControl)sender).Tag + 1;
                 int max = 16256 - 128;
-                Core.Playback corePlayback = coreApp.Playbacks[channel-1];
-                
+                Core.Playback corePlayback = coreApp.Playbacks[(playbackForm.currentPage * 8) - 8 + (int)((PlaybackControl)sender).Tag];
+
                 if (corePlayback.Stack != null)
-                    outputDevice.SendPitchBend(outChannels[channel-1], Convert.ToInt32((max * corePlayback.Stack.FaderValue) + 128));
+                    outputDevice.SendPitchBend(outChannels[channel - 1], Convert.ToInt32((max * corePlayback.Stack.FaderValue) + 128));
+                else
+                    outputDevice.SendPitchBend(outChannels[channel - 1], 0);
             }));
         }
 
