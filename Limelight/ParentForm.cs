@@ -110,7 +110,14 @@ namespace Limelight
             coreApp.Playbacks[1].Stack = cs2;
 
             // Start DMX
-            OpenDMX.start();
+            try
+            {
+                OpenDMX.start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
 
             // Start the update timer
             updateTimer = new System.Timers.Timer();
