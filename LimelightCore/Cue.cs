@@ -14,7 +14,6 @@ namespace Limelight.Core
         public double FadeInTime { get; set; }
         public double FadeOutTime { get; set; }
         public double? DwellTime { get; set; }
-        public List<ICueEffect> Effects { get; set;}
         public CueStatus Status { get; set; }
         public double StatusPct { get; set; }
         public long Ticks { get; set; }

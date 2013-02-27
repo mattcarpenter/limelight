@@ -35,7 +35,8 @@ namespace Limelight.Core
                             foreach (FixtureAttributeChannel c in fa.Channels)
                             {
                                 c.PendingRender = true;
-                                c.LastUpdated++;
+                                //c.LastUpdated++;
+                                c.LastUpdated = DateTime.Now.Ticks;
                             }
                 }
             }

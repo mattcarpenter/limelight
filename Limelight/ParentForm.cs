@@ -15,6 +15,7 @@ namespace Limelight
         private Core.Application coreApp;
         private System.Timers.Timer updateTimer;
         private PlaybackForm playbackForm;
+        private BCF2000 bcf2000;
 
         /// <summary>
         /// Constructor
@@ -62,6 +63,9 @@ namespace Limelight
 
             updateTimer.Start();
 
+            // Midi control
+            bcf2000 = new BCF2000(coreApp,playbackForm);
+
             // Add some shizz for testing
             Core.Fixture f = new Core.Fixture(0);
             f.PatchAddress = 1;
@@ -69,6 +73,7 @@ namespace Limelight
             a.Type = Core.FixtureAttributeType.Intensity;
             Core.FixtureAttributeChannel c = new Core.FixtureAttributeChannel();
             c.Value = 1;
+            c.Presidence = Core.ChannelPresidence.LTP;
             c.RelativeChannelNumber = 1;
             c.Type = Core.FixtureAttributeChannelType.Default;
             a.Channels.Add(c);
@@ -77,6 +82,10 @@ namespace Limelight
             Core.Fixture f2 = f.Clone();
             f2.Master = f;
 
+            Core.Fixture f3 = f.Clone();
+            f3.Master = f;
+
+            // Cue 1
             Core.Cue cue = new Core.Cue();
             cue.AddFixture(f2);
             cue.FadeInTime = 0;
@@ -84,12 +93,28 @@ namespace Limelight
             cue.FadeOutTime = 0;
 
             Core.CueStack cs = new Core.CueStack();
+            cs.Label = "cs1";
             cs.AddCue(cue);
             cs.ExecuteNextCue();
 
             coreApp.CueStacks.Add(cs);
 
+            // Cue 2
+            Core.Cue cue2 = new Core.Cue();
+            cue2.AddFixture(f3);
+            cue2.FadeInTime = 0;
+            cue2.DwellTime = null;
+            cue2.FadeOutTime = 0;
+
+            Core.CueStack cs2 = new Core.CueStack();
+            cs2.AddCue(cue2);
+            cs2.Label = "cs2";
+            cs2.ExecuteNextCue();
+
+            coreApp.CueStacks.Add(cs2);
+
             coreApp.Playbacks[0].Stack = cs;
+            coreApp.Playbacks[1].Stack = cs2;
 
             // Start DMX
             OpenDMX.start();
@@ -122,7 +147,7 @@ namespace Limelight
         /// <param name="fixtures"></param>
         public void WriteDMX()
         {
-            this.Text = coreApp.Universes[0].Channels[0].Value + " - " + coreApp.Universes[0].Channels[0].Value + " - " + coreApp.CueStacks[0].Cues[0].Status.ToString() + " - " + coreApp.CueStacks[0].Fixtures[0].Attributes[0].Channels[0].RenderedValue;
+            //this.Text = coreApp.CueStacks[0].Fixtures[0].Attributes[0].Channels[0].LastUpdated + " - " + coreApp.CueStacks[1].Fixtures[0].Attributes[0].Channels[0].LastUpdated;
             /*for (int i = 0; i < 512; i++)
             {
                 Byte DMXValue = Convert.ToByte(coreApp.Universes[0].Channels[i].Value * 255.0f);
@@ -132,7 +157,7 @@ namespace Limelight
             foreach (Core.Fixture fixture in coreApp.Fixtures)
             {
                 Byte DMXValue = Convert.ToByte(fixture.Attributes[0].Channels[0].RenderedValue * 255.0f);
-               OpenDMX.setDmxValue(fixture.PatchAddress, DMXValue);
+                OpenDMX.setDmxValue(fixture.PatchAddress, DMXValue);
             }
         }
     }

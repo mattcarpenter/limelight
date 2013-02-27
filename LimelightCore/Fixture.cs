@@ -40,7 +40,10 @@ namespace Limelight.Core
             newFixture = ObjectCopier.Clone<Fixture>(this);
             
             // Set the master fixture reference to this instance
-            newFixture.Master = this;
+            if (this.Master != null)
+                newFixture.Master = this.Master;
+            else
+                newFixture.Master = this;
 
             return newFixture;
         }
@@ -49,7 +52,7 @@ namespace Limelight.Core
         /// Combines current instance with fixture
         /// </summary>
         /// <param name="fixture">Fixture to be combined with current instance</param>
-        public void Combine(Fixture fixture, bool add)
+        public void Combine(Fixture fixture, bool add, bool enableLTP = false)
         {
             for (int attrCur = 0; attrCur < this.Attributes.Count; attrCur++)
             {
@@ -74,11 +77,35 @@ namespace Limelight.Core
                         }
                         else
                         {
+                            if (enableLTP == true)
+                                Console.WriteLine("test");
+
+                            // HTP
                             if (thisChannel.RenderedValue < otherChannel.RenderedValue || (thisChannel.RenderedValue == null && otherChannel.RenderedValue != null))
-                                thisChannel.RenderedValue = otherChannel.RenderedValue;
+                            {
+                                if(enableLTP == false)
+                                    thisChannel.RenderedValue = otherChannel.RenderedValue;
+                            }
+                            // Actually, if channel is LTP and other channel was more recently updated,
+                            // use the last channel's updated value.
+                            if (thisChannel.Presidence == ChannelPresidence.LTP && enableLTP == true)
+                            {
+                                if (thisChannel.LastUpdated < otherChannel.LastUpdated)
+                                {
+                                    thisChannel.RenderedValue = otherChannel.RenderedValue;
+                                    thisChannel.LastUpdated = otherChannel.LastUpdated;
+                                }
+                                else
+                                {
+                                    thisChannel.LastUpdated = DateTime.Now.Ticks;
+                                }
+                            }
                         }
-                        this.Attributes[attrCur].Channels[attrChanCur].PendingRender = true;
-                        this.Attributes[attrCur].Channels[attrChanCur].LastUpdated = DateTime.Now.Ticks;
+                        if (enableLTP == false)
+                        {
+                            this.Attributes[attrCur].Channels[attrChanCur].PendingRender = true;
+                            this.Attributes[attrCur].Channels[attrChanCur].LastUpdated = DateTime.Now.Ticks;
+                        }
                     }
                 }
             }

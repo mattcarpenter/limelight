@@ -13,3 +13,5 @@ C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Release\Limelight.Resource.resources
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Release\Limelight.exe
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Release\Limelight.pdb
+C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\bin\Release\Midi.dll
+C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\bin\Release\Midi.xml

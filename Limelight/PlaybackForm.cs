@@ -13,7 +13,7 @@ namespace Limelight
     {
         protected List<PlaybackControl> playbackControls;
         protected Core.Application coreApp;
-        
+        public event EventHandler OnFaderChange;
         public int currentPage;
         
         public const int MAX_PAGES = 10;
@@ -102,6 +102,7 @@ namespace Limelight
                 return;
             currentPage++;
             UpdateFaderPositions();
+            InvokeOnFaderChangeForAll();
         }
 
         /// <summary>
@@ -113,6 +114,7 @@ namespace Limelight
                 return;
             currentPage--;
             UpdateFaderPositions();
+            InvokeOnFaderChangeForAll();
         }
 
         /// <summary>
@@ -146,6 +148,21 @@ namespace Limelight
 
             if (corePlayback.Stack != null)
                 corePlayback.Stack.FaderValue = (double)((PlaybackControl)sender).fader.Value / 100;
+
+            OnFaderChange.Invoke(sender, new EventArgs());
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            coreApp.BreakMe = true;
+        }
+
+        private void InvokeOnFaderChangeForAll()
+        {
+            foreach (PlaybackControl plc in this.Controls.OfType<PlaybackControl>())
+            {
+                OnFaderChange.Invoke(plc, new EventArgs());
+            }
         }
     }
 }

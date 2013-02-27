@@ -35,6 +35,9 @@
     </DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Midi">
+      <HintPath>..\Limelight\lib\Midi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,7 +56,6 @@
     <Compile Include="FixtureAttribute.cs" />
     <Compile Include="FixtureAttributeChannel.cs" />
     <Compile Include="FixtureGroup.cs" />
-    <Compile Include="ICueEffect.cs" />
     <Compile Include="ObjectCopier.cs" />
     <Compile Include="Playback.cs" />
     <Compile Include="Programmer.cs" />

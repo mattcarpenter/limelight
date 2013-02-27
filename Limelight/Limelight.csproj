@@ -40,6 +40,9 @@
     <Reference Include="Limelight.Core">
       <HintPath>..\LimelightCore\bin\Release\Limelight.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Midi">
+      <HintPath>lib\Midi.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BCF2000.cs" />
     <Compile Include="OpenDMX.cs" />
     <Compile Include="ParentForm.cs">
       <SubType>Form</SubType>

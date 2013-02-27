@@ -14,6 +14,8 @@ namespace Limelight.Core
         public double Tempo;
         public bool Blackout;
         public Programmer CueProgrammer;
+        public bool BreakMe;
+        public int currentPage;
 
         public Application()
         {
@@ -78,15 +80,20 @@ namespace Limelight.Core
         public void Update()
         {
             Fixtures.Clear();
+            // Update both cue stacks
+            foreach (CueStack stack in CueStacks)
+                stack.Update();
+            if (BreakMe == true)
+                Console.WriteLine("break");
+
             foreach (CueStack stack in CueStacks)
             {
-                stack.Update();
                 foreach (Fixture fixture in stack.Fixtures)
                 {
                     Fixture normalizedFixture = ExistsInFixtures(fixture);
                     if (normalizedFixture != null)
                     {
-                        normalizedFixture.Combine(fixture, false);
+                        normalizedFixture.Combine(fixture, false,true);
                     }
                     else
                     {
