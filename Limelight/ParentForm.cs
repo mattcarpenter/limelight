@@ -56,13 +56,6 @@ namespace Limelight
             playbackForm.MdiParent = this;
             playbackForm.Show();
 
-            // Start the update timer
-            updateTimer = new System.Timers.Timer();
-            updateTimer.Interval = 1;
-            updateTimer.Elapsed += Update;
-
-            updateTimer.Start();
-
             // Midi control
             bcf2000 = new BCF2000(coreApp,playbackForm);
 
@@ -118,6 +111,13 @@ namespace Limelight
 
             // Start DMX
             OpenDMX.start();
+
+            // Start the update timer
+            updateTimer = new System.Timers.Timer();
+            updateTimer.Interval = 1;
+            updateTimer.Elapsed += Update;
+
+            updateTimer.Start();
         }
 
         /// <summary>

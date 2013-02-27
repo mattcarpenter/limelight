@@ -7,3 +7,12 @@ C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\obj\Release\LimelightTests.pdb
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\nunit.framework.dll
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\LimelightTests\bin\Release\nunit.framework.xml
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\bin\Release\LimelightTests.dll
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\bin\Release\LimelightTests.pdb
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\bin\Release\Limelight.Core.dll
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\bin\Release\nunit.framework.dll
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\bin\Release\Limelight.Core.pdb
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\bin\Release\nunit.framework.xml
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\obj\Release\LimelightTests.csprojResolveAssemblyReference.cache
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\obj\Release\LimelightTests.dll
+C:\Users\mcarpenter\Desktop\limelight\LimelightTests\obj\Release\LimelightTests.pdb

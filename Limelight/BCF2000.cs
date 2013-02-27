@@ -56,6 +56,9 @@ namespace Limelight
             outChannels[13] = Channel.Channel4;
             outChannels[14] = Channel.Channel5;
             outChannels[15] = Channel.Channel6;
+            
+            if (inputDevice == null || outputDevice == null)
+                return; 
 
             inputDevice.Open();
             outputDevice.Open();
