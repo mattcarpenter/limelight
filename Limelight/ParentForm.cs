@@ -160,5 +160,22 @@ namespace Limelight
                 OpenDMX.setDmxValue(fixture.PatchAddress, DMXValue);
             }
         }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fIleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fixtureEditorToolStripFixtureEditor_Click(object sender, EventArgs e)
+        {
+            FixtureEditor editor = new FixtureEditor();
+            editor.MdiParent = this;
+            editor.Show();
+        }
     }
 }

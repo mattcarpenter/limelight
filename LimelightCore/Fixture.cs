@@ -1,7 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace Limelight.Core
 {
@@ -19,6 +21,7 @@ namespace Limelight.Core
         public List<FixtureAttribute> Attributes { get; set; }
         public Cue cue { get; set; }
         public int Universe { get; set; }
+        public string Manufacturer { get; set; }
 
         /// <summary>
         /// Constructor
@@ -112,6 +115,29 @@ namespace Limelight.Core
         }
 
         /// <summary>
+        /// Serializes and saves a fixture to a file
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <returns></returns>
+        public bool SaveToFile(string Path)
+        {
+            try
+            {
+                TextWriter writer = new StreamWriter(Path);
+                writer.Write(SerializeToXml());
+                writer.Flush();
+                writer.Close();
+            }
+            catch (Exception ex)
+            {
+                // Error saving file
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Zeros out all channels
         /// </summary>
         public void Zero()
@@ -119,6 +145,21 @@ namespace Limelight.Core
             foreach (FixtureAttribute a in Attributes)
                 foreach (FixtureAttributeChannel c in a.Channels)
                     c.RenderedValue = 0;
+        }
+
+        public string SerializeToXml()
+        {
+            DataContractSerializer dataContractSerializer = new DataContractSerializer(typeof(Fixture), null, Int32.MaxValue, false, true, null);
+
+            String text;
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                dataContractSerializer.WriteObject(memoryStream, this);
+                byte[] data = new byte[memoryStream.Length];
+                Array.Copy(memoryStream.GetBuffer(), data, data.Length);
+                text = Encoding.UTF8.GetString(data);
+            }
+            return text;
         }
     }
 }

@@ -15,3 +15,5 @@ C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debu
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.pdb
 C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\bin\Debug\Midi.dll
 C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\bin\Debug\Midi.xml
+C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditor.resources
+C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditorAddFixture.resources

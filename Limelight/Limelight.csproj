@@ -45,6 +45,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +58,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BCF2000.cs" />
+    <Compile Include="FixtureEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixtureEditor.Designer.cs">
+      <DependentUpon>FixtureEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FixtureEditorAddFixture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixtureEditorAddFixture.Designer.cs">
+      <DependentUpon>FixtureEditorAddFixture.cs</DependentUpon>
+    </Compile>
     <Compile Include="OpenDMX.cs" />
     <Compile Include="ParentForm.cs">
       <SubType>Form</SubType>
@@ -82,6 +96,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FixtureEditor.resx">
+      <DependentUpon>FixtureEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FixtureEditorAddFixture.resx">
+      <DependentUpon>FixtureEditorAddFixture.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ParentForm.resx">
       <DependentUpon>ParentForm.cs</DependentUpon>
     </EmbeddedResource>

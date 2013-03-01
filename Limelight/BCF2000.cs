@@ -32,7 +32,6 @@ namespace Limelight
                 if (InputDevice.InstalledDevices[i].Name == "BCF2000")
                 {
                     inputDevice = InputDevice.InstalledDevices[i];
-                    MessageBox.Show("found BCF2000 input device");
                 }
             for (int i = 0; i < OutputDevice.InstalledDevices.Count; i++)
                 if (OutputDevice.InstalledDevices[i].Name == "BCF2000")
