@@ -148,8 +148,8 @@ namespace Limelight
 
             if (corePlayback.Stack != null)
                 corePlayback.Stack.FaderValue = (double)((PlaybackControl)sender).fader.Value / 100;
-
-            OnFaderChange.Invoke(sender, new EventArgs());
+            if(OnFaderChange!=null)
+                OnFaderChange.Invoke(sender, new EventArgs());
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -159,6 +159,8 @@ namespace Limelight
 
         private void InvokeOnFaderChangeForAll()
         {
+            if (OnFaderChange == null)
+                return;
             foreach (PlaybackControl plc in this.playbackPanel.Controls.OfType<PlaybackControl>())
             {
                 OnFaderChange.Invoke(plc, new EventArgs());
