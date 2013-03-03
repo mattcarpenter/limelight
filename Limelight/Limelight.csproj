@@ -64,6 +64,12 @@
     <Compile Include="FixtureEditor.Designer.cs">
       <DependentUpon>FixtureEditor.cs</DependentUpon>
     </Compile>
+    <Compile Include="FixtureEditorEditChannel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FixtureEditorEditChannel.Designer.cs">
+      <DependentUpon>FixtureEditorEditChannel.cs</DependentUpon>
+    </Compile>
     <Compile Include="FixtureEditorAddFixture.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     </Compile>
     <EmbeddedResource Include="FixtureEditor.resx">
       <DependentUpon>FixtureEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FixtureEditorEditChannel.resx">
+      <DependentUpon>FixtureEditorEditChannel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FixtureEditorAddFixture.resx">
       <DependentUpon>FixtureEditorAddFixture.cs</DependentUpon>

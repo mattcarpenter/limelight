@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Limelight.Core
 {
@@ -160,6 +162,33 @@ namespace Limelight.Core
                 text = Encoding.UTF8.GetString(data);
             }
             return text;
+        }
+
+        /// <summary>
+        /// Loads a fixture from an XML file
+        /// </summary>
+        /// <param name="filename"></param>
+        public static Fixture LoadFromFile(string path)
+        {
+            try
+            {
+                TextReader tr = new StreamReader(path);
+                string xml = tr.ReadToEnd();
+                tr.Close();
+
+                MemoryStream memoryStream = new MemoryStream(Encoding.Unicode.GetBytes(xml));
+                using (
+                XmlDictionaryReader reader = XmlDictionaryReader.CreateTextReader(memoryStream, Encoding.Unicode,
+                           new XmlDictionaryReaderQuotas(), null))
+                {
+                    DataContractSerializer dataContractSerializer = new DataContractSerializer(typeof(Fixture), null, Int32.MaxValue, false, true, null);
+                    return (Fixture)dataContractSerializer.ReadObject(reader, true);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

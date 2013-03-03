@@ -1,38 +1,20 @@
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.exe
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\AVFader.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Midi.dll
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.pdb
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Midi.xml
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditor.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditorAddFixture.resources
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.ParentForm.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackControl.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackForm.resources
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.Properties.Resources.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.Resource.resources
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.exe
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.pdb
-C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackForm.resources
-C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\AVFader.dll
-C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.Resource.resources
-C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PlaybackControl.resources
-C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.dll
-C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\bin\Debug\Limelight.Core.pdb
-C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\bin\Debug\Midi.dll
-C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\bin\Debug\Midi.xml
-<<<<<<< HEAD
-C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditor.resources
-C:\Users\Matt\documents\visual studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditorAddFixture.resources
-=======
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\Limelight.exe
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\Limelight.pdb
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\AVFader.dll
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\Limelight.Core.dll
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\Midi.dll
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\Limelight.Core.pdb
-C:\Users\mcarpenter\Desktop\limelight\Limelight\bin\Debug\Midi.xml
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.csprojResolveAssemblyReference.cache
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.ParentForm.resources
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.PlaybackControl.resources
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.PlaybackForm.resources
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.Properties.Resources.resources
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.Resource.resources
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.csproj.GenerateResource.Cache
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.exe
-C:\Users\mcarpenter\Desktop\limelight\Limelight\obj\x86\Debug\Limelight.pdb
->>>>>>> origin/master
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditorEditChannel.resources
