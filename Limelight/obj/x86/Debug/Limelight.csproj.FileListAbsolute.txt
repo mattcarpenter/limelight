@@ -18,3 +18,4 @@ C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.exe
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.pdb
 C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.FixtureEditorEditChannel.resources
+C:\Users\Matt\Documents\Visual Studio 2010\Projects\Limelight\Limelight\obj\x86\Debug\Limelight.PatchForm.resources

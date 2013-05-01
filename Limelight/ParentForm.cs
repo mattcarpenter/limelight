@@ -184,5 +184,12 @@ namespace Limelight
             editor.MdiParent = this;
             editor.Show();
         }
+
+        private void patchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PatchForm patch = new PatchForm();
+            patch.MdiParent = this;
+            patch.Show();
+        }
     }
 }

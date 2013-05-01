@@ -33,6 +33,7 @@
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixtureEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixtureEditorToolStripFixtureEditor = new System.Windows.Forms.ToolStripMenuItem();
+            this.patchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,13 +60,14 @@
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // fixtureEditorToolStripMenuItem
             // 
             this.fixtureEditorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fixtureEditorToolStripFixtureEditor});
+            this.fixtureEditorToolStripFixtureEditor,
+            this.patchToolStripMenuItem});
             this.fixtureEditorToolStripMenuItem.Name = "fixtureEditorToolStripMenuItem";
             this.fixtureEditorToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.fixtureEditorToolStripMenuItem.Text = "Setup";
@@ -76,6 +78,13 @@
             this.fixtureEditorToolStripFixtureEditor.Size = new System.Drawing.Size(152, 22);
             this.fixtureEditorToolStripFixtureEditor.Text = "Fixture Editor";
             this.fixtureEditorToolStripFixtureEditor.Click += new System.EventHandler(this.fixtureEditorToolStripFixtureEditor_Click);
+            // 
+            // patchToolStripMenuItem
+            // 
+            this.patchToolStripMenuItem.Name = "patchToolStripMenuItem";
+            this.patchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.patchToolStripMenuItem.Text = "Patch";
+            this.patchToolStripMenuItem.Click += new System.EventHandler(this.patchToolStripMenuItem_Click);
             // 
             // ParentForm
             // 
@@ -103,6 +112,7 @@
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fixtureEditorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fixtureEditorToolStripFixtureEditor;
+        private System.Windows.Forms.ToolStripMenuItem patchToolStripMenuItem;
 
     }
 }
